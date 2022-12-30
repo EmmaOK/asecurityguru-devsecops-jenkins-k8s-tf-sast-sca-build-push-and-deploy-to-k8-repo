@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: asgbuggy-deployment
+  name: hgbuggy-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: asgbuggy
+      app: hgbuggy
   template:
     metadata:
       labels:
-        app: asgbuggy
+        app: hgbuggy
     spec:
       containers:
-      - name: asgbuggy
+      - name: hgbuggy
         image: 145988340565.dkr.ecr.us-west-2.amazonaws.com/asg
         imagePullPolicy: Always
         ports:
@@ -24,9 +24,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: asgbuggy
-    k8s-app: asgbuggy
-  name: asgbuggy
+    app: hgbuggy
+    k8s-app: hgbuggy
+  name: hgbuggy
 spec:
   ports:
   - name: http
@@ -35,4 +35,4 @@ spec:
     targetPort: 8080
   type: LoadBalancer
   selector:
-    app: asgbuggy
+    app: hgbuggy
